@@ -62,17 +62,75 @@ else {
  overlay.style.display='flex';
  document.documentElement.requestFullscreen?.();
  function show(){
-  let ai,ci,key;
-  do{
-   ai=Math.floor(Math.random()*sa.length);
-   ci=Math.floor(Math.random()*sc.length);
-   key=ai+'-'+ci;
-  }while(key===last && sa.length*sc.length>1);
-  last=key;
-  const idx=arrows.indexOf(sa[ai]);
-  sym.textContent=chars[idx]||'↑';
-  sym.style.color=getComputedStyle(sc[ci]).backgroundColor;
- }
+
+    //==========================================
+    // SOLO FLECHAS
+    //==========================================
+
+    if(modo==="flechas"){
+
+        const ai=Math.floor(Math.random()*sa.length);
+
+        const idx=arrows.indexOf(sa[ai]);
+
+        sym.textContent=chars[idx] || "↑";
+
+        overlay.style.background="#ffffff";
+
+        sym.style.color="#000000";
+
+        return;
+
+    }
+
+    //==========================================
+    // SOLO COLORES
+    //==========================================
+
+    if(modo==="colores"){
+
+        const ci=Math.floor(Math.random()*sc.length);
+
+        sym.textContent="";
+
+        overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
+
+        return;
+
+    }
+
+    //==========================================
+    // FLECHAS + COLORES
+    //==========================================
+
+    if(Math.random()<0.5){
+
+        // Mostrar flecha
+
+        const ai=Math.floor(Math.random()*sa.length);
+
+        const idx=arrows.indexOf(sa[ai]);
+
+        sym.textContent=chars[idx] || "↑";
+
+        sym.style.color="#000000";
+
+        overlay.style.background="#ffffff";
+
+    }
+    else{
+
+        // Mostrar color
+
+        const ci=Math.floor(Math.random()*sc.length);
+
+        sym.textContent="";
+
+        overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
+
+    }
+
+}
  show();
  timer=setInterval(show, intervalo*1000);
 };
