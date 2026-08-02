@@ -1,5 +1,3 @@
-<script>
-
 const tiles=document.querySelectorAll('.tile');
 tiles.forEach(b=>b.onclick=()=>b.classList.toggle('active'));
 const rb=document.getElementById('reset');
@@ -67,4 +65,3 @@ start.onclick=()=>{
  timer=setInterval(show, intervalo*1000);
 };
 })();
-</script>
