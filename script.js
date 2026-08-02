@@ -33,8 +33,15 @@ const chars=['↑','→','↓','←'];
 let timer,last='';
 const overlay=document.createElement('div');
 overlay.style.cssText='position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:999999;';
-const sym=document.createElement('div');
-sym.style.cssText='font-size:70vmin;font-family:Arial;font-weight:bold;';
+const sym=document.createElement('img');
+sym.src='imagenes/flecha.svg';
+sym.style.cssText=`
+width:55vmin;
+height:55vmin;
+display:none;
+user-select:none;
+pointer-events:none;
+`;
 overlay.appendChild(sym);
 document.body.appendChild(overlay);
 overlay.onclick=()=>{clearInterval(timer);overlay.style.display='none';if(document.fullscreenElement)document.exitFullscreen();};
@@ -73,7 +80,8 @@ else {
 
         const idx=arrows.indexOf(sa[ai]);
 
-        sym.textContent=chars[idx] || "↑";
+ sym.style.display="block";
+sym.style.transform=`rotate(${idx*45}deg)`;
 
         overlay.style.background="#ffffff";
 
@@ -91,7 +99,7 @@ else {
 
         const ci=Math.floor(Math.random()*sc.length);
 
-        sym.textContent="";
+     sym.style.display="none";
 
         overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
 
@@ -111,7 +119,8 @@ else {
 
         const idx=arrows.indexOf(sa[ai]);
 
-        sym.textContent=chars[idx] || "↑";
+sym.style.display="block";
+sym.style.transform=`rotate(${idx*45}deg)`;
 
         sym.style.color="#000000";
 
@@ -124,7 +133,7 @@ else {
 
         const ci=Math.floor(Math.random()*sc.length);
 
-        sym.textContent="";
+    sym.style.display="none";
 
         overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
 
