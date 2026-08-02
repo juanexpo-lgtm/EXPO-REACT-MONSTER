@@ -62,72 +62,55 @@ else {
  overlay.style.display='flex';
  document.documentElement.requestFullscreen?.();
  function show(){
+function show(){
 
-    //==========================================
     // SOLO FLECHAS
-    //==========================================
-
     if(modo==="flechas"){
 
-        const ai=Math.floor(Math.random()*sa.length);
+        const flecha = sa[Math.floor(Math.random()*sa.length)];
 
-       const angle = Number(sa[ai].dataset.angle);
+        sym.innerHTML = flecha.innerHTML;
 
-        sym.textContent=chars[idx] || "↑";
+        overlay.style.background = "#ffffff";
 
-        overlay.style.background="#ffffff";
-
-        sym.style.color="#000000";
+        sym.style.color = "";
 
         return;
-
     }
 
-    //==========================================
     // SOLO COLORES
-    //==========================================
-
     if(modo==="colores"){
 
-        const ci=Math.floor(Math.random()*sc.length);
+        const color = sc[Math.floor(Math.random()*sc.length)];
 
-        sym.textContent="";
+        sym.innerHTML = "";
 
-        overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
+        overlay.style.background =
+            getComputedStyle(color).backgroundColor;
 
         return;
-
     }
 
-    //==========================================
-    // FLECHAS + COLORES
-    //==========================================
+    // FLECHAS O COLORES (aleatorio)
 
     if(Math.random()<0.5){
 
-        // Mostrar flecha
+        const flecha = sa[Math.floor(Math.random()*sa.length)];
 
-        const ai=Math.floor(Math.random()*sa.length);
+        sym.innerHTML = flecha.innerHTML;
 
-     const angle = Number(sa[ai].dataset.angle);
+        overlay.style.background = "#ffffff";
 
-        sym.textContent=chars[idx] || "↑";
+        sym.style.color = "";
 
-        sym.style.color="#000000";
+    }else{
 
-        overlay.style.background="#ffffff";
+        const color = sc[Math.floor(Math.random()*sc.length)];
 
-    }
-    else{
+        sym.innerHTML = "";
 
-        // Mostrar color
-
-        const ci=Math.floor(Math.random()*sc.length);
-
-        sym.textContent="";
-
-        overlay.style.background=getComputedStyle(sc[ci]).backgroundColor;
-
+        overlay.style.background =
+            getComputedStyle(color).backgroundColor;
     }
 
 }
