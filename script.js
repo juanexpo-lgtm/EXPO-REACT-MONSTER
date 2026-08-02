@@ -42,7 +42,23 @@ function pick(a){return a[Math.floor(Math.random()*a.length)]}
 start.onclick=()=>{
  const sa=arrows.filter(x=>x.classList.contains('active'));
  const sc=colors.filter(x=>x.classList.contains('active'));
- if(!sa.length||!sc.length){alert('Selecciona flechas y colores');return;}
+// Debe haber al menos un tipo de estímulo seleccionado
+if (!sa.length && !sc.length) {
+    alert("Selecciona al menos una flecha o un color");
+    return;
+}
+// Determinar el modo de entrenamiento
+let modo;
+
+if (sa.length && sc.length) {
+    modo = "combinado";
+}
+else if (sa.length) {
+    modo = "flechas";
+}
+else {
+    modo = "colores";
+}
  overlay.style.display='flex';
  document.documentElement.requestFullscreen?.();
  function show(){
