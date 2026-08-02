@@ -71,7 +71,7 @@ else {
 
         const ai=Math.floor(Math.random()*sa.length);
 
-        const idx=arrows.indexOf(sa[ai]);
+       const angle = Number(sa[ai].dataset.angle);
 
         sym.textContent=chars[idx] || "↑";
 
@@ -109,7 +109,7 @@ else {
 
         const ai=Math.floor(Math.random()*sa.length);
 
-        const idx=arrows.indexOf(sa[ai]);
+     const angle = Number(sa[ai].dataset.angle);
 
         sym.textContent=chars[idx] || "↑";
 
