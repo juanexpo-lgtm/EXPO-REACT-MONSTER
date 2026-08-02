@@ -25,10 +25,6 @@ botones[1].addEventListener('click',()=>{
   mostrar();
 });
 mostrar();
-
-</script>
-
-<script>
 (function(){
 const start=document.getElementById('start');
 const arrows=[...document.querySelectorAll('.arrow')];
